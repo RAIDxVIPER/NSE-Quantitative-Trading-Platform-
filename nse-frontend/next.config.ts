@@ -5,13 +5,18 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/webp"],
   },
+  transpilePackages: [
+    "three",
+    "@react-three/fiber",
+    "@react-three/drei",
+  ],
   experimental: {
     optimizePackageImports: [
       "lucide-react",
       "framer-motion",
-      "@react-three/drei",
     ],
   },
 };
 
 export default nextConfig;
+

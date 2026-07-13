@@ -9,6 +9,7 @@ interface LightweightChartProps {
   data: OHLCVBar[];
   height?: number;
   className?: string;
+  chartType?: "candles" | "line" | "area" | "bars";
 }
 
 const CHART_COLORS = {
@@ -26,11 +27,12 @@ const CHART_COLORS = {
   areaBottomColor: "rgba(108,99,255,0.02)",
 };
 
-export function LightweightChart({ data, height = 400, className }: LightweightChartProps) {
+export function LightweightChart({ data, height = 400, className, chartType }: LightweightChartProps) {
   const chartContainerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
   const seriesRef = useRef<ISeriesApi<"Candlestick"> | ISeriesApi<"Line"> | ISeriesApi<"Area"> | null>(null);
-  const selectedChartType = useAppStore((s) => s.selectedChartType);
+  const storeChartType = useAppStore((s) => s.selectedChartType);
+  const selectedChartType = chartType ?? storeChartType;
 
   const createChartInstance = useCallback(() => {
     if (!chartContainerRef.current) return;

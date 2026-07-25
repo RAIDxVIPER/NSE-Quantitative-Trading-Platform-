@@ -110,11 +110,11 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-wrap items-center justify-center gap-4"
         >
-          <a href="#dashboard" className="btn-primary">
+          <a href="/dashboard" className="btn-primary">
             Launch Dashboard
             <ArrowRight size={16} />
           </a>
-          <a href="#analytics" className="btn-secondary">
+          <a href="/analytics" className="btn-secondary">
             Explore Analytics
           </a>
         </motion.div>

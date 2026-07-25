@@ -171,7 +171,7 @@ export function Portfolio() {
   }, [summary, holdings.length]);
 
   return (
-    <section id="portfolio" className="relative py-24">
+    <section id="portfolio" className="relative pt-20 pb-24">
       <div className="mx-auto max-w-[1440px] px-6">
         {/* Section header */}
         <motion.div {...stagger} className="mb-12">

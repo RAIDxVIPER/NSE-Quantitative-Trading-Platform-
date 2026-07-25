@@ -62,7 +62,7 @@ const techStack = [
 
 export function About() {
   return (
-    <section id="about" className="relative py-24">
+    <section id="about" className="relative pt-20 pb-24">
       <div className="mx-auto max-w-[1440px] px-6">
         {/* Two-column layout */}
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">

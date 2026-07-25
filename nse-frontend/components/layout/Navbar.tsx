@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Activity,
   Search,
@@ -18,11 +20,11 @@ import { useAppStore } from "@/lib/store";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 
 const NAV_LINKS = [
-  { label: "Dashboard", href: "#dashboard", icon: LayoutDashboard },
-  { label: "Analytics", href: "#analytics", icon: BarChart3 },
-  { label: "Portfolio", href: "#portfolio", icon: Briefcase },
-  { label: "News", href: "#news", icon: Newspaper },
-  { label: "About", href: "#about", icon: Info },
+  { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { label: "Analytics", href: "/analytics", icon: BarChart3 },
+  { label: "Portfolio", href: "/portfolio", icon: Briefcase },
+  { label: "News", href: "/news", icon: Newspaper },
+  { label: "About", href: "/about", icon: Info },
 ];
 
 function ISTClock() {
@@ -55,7 +57,8 @@ function ISTClock() {
 
 export function Navbar() {
   const { isScrolled } = useScrollProgress();
-  const { openSearch, isMobileMenuOpen, setMobileMenuOpen, activeSection } = useAppStore();
+  const { openSearch, isMobileMenuOpen, setMobileMenuOpen } = useAppStore();
+  const pathname = usePathname();
 
   /* ⌘K shortcut */
   useEffect(() => {
@@ -84,7 +87,7 @@ export function Navbar() {
       >
         <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-6">
           {/* Logo */}
-          <a href="#hero" className="group flex items-center gap-2.5">
+          <Link href="/" className="group flex items-center gap-2.5">
             <div
               className="flex h-8 w-8 items-center justify-center rounded-lg"
               style={{
@@ -97,14 +100,14 @@ export function Navbar() {
               NSE
               <span className="text-gradient"> Analytics</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Nav Links */}
           <div className="hidden items-center gap-1 md:flex">
             {NAV_LINKS.map((link) => {
-              const isActive = activeSection === link.href.replace("#", "");
+              const isActive = pathname === link.href;
               return (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
@@ -123,7 +126,7 @@ export function Navbar() {
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
-                </a>
+                </Link>
               );
             })}
           </div>
@@ -197,20 +200,20 @@ export function Navbar() {
               {NAV_LINKS.map((link) => {
                 const Icon = link.icon;
                 return (
-                  <a
+                  <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
                       "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-colors",
-                      activeSection === link.href.replace("#", "")
+                      pathname === link.href
                         ? "bg-[rgba(108,99,255,0.1)] text-[var(--text-primary)]"
                         : "text-[var(--text-secondary)] hover:bg-[rgba(255,255,255,0.04)] hover:text-[var(--text-primary)]"
                     )}
                   >
                     <Icon size={16} />
                     {link.label}
-                  </a>
+                  </Link>
                 );
               })}
             </div>

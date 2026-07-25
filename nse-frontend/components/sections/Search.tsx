@@ -138,7 +138,7 @@ export function Search() {
   const hasResults = results.length > 0;
 
   return (
-    <section id="search" className="relative py-24">
+    <section id="search" className="relative pt-20 pb-24">
       <div className="mx-auto max-w-[1440px] px-6">
         {/* Section header */}
         <motion.div

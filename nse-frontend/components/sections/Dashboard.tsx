@@ -56,7 +56,7 @@ export function Dashboard() {
   const timeframes = ["1D", "1W", "1M", "3M", "6M", "1Y"];
 
   return (
-    <section id="dashboard" className="relative py-24">
+    <section id="dashboard" className="relative pt-20 pb-24">
       <div className="mx-auto max-w-[1440px] px-6">
         {/* Section header */}
         <motion.div {...stagger} className="mb-12">

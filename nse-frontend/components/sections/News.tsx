@@ -290,7 +290,7 @@ export function News() {
   const remainingItems = news.filter((n) => n.id !== featuredItem?.id);
 
   return (
-    <section id="news" className="relative py-24">
+    <section id="news" className="relative pt-20 pb-24">
       <div className="mx-auto max-w-[1440px] px-6">
         {/* Section header */}
         <motion.div {...stagger} className="mb-12">
